@@ -1,3 +1,4 @@
+// 模块这么多，可以考虑把一些构建重复的构建脚本，整理为单独的一份，然后再通过 includeBuild 导入一下。
 include ':leakcanary:leakcanary-android'
 include ':leakcanary:leakcanary-android-core'
 include ':leakcanary:leakcanary-android-instrumentation'
@@ -27,6 +28,7 @@ include ':shark:shark-hprof-test'
 include ':shark:shark-log'
 include ':shark:shark-test'
 
+// 关于 rootProject，我一直也没搞懂要取什么比较好，取名一向挺难的
 rootProject.name = 'leakcanary-repo'
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

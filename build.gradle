@@ -11,6 +11,7 @@ buildscript {
     gradlePluginPortal()
     mavenCentral()
   }
+  // 怎么还是过时的写法，都已经用 version catalog 了。
   dependencies {
     classpath libs.gradlePlugin.android
     classpath libs.gradlePlugin.kotlin
@@ -20,6 +21,7 @@ buildscript {
     classpath libs.gradlePlugin.binaryCompatibility
     classpath libs.gradlePlugin.keeper
     classpath libs.gradlePlugin.sqldelight
+    // hint 怎么和上面这些格格不如，应该定义在 libs.versions.toml 才对，review 时有点放水啊
     classpath 'com.google.dagger:hilt-android-gradle-plugin:2.43.2'
   }
 }
@@ -51,6 +53,7 @@ subprojects {
   repositories {
     google()
     mavenCentral()
+    // 非必要的注释代码应该删除掉。
     //    maven {
     //      url 'https://oss.sonatype.org/content/repositories/snapshots/'
     //    }
@@ -58,6 +61,7 @@ subprojects {
     jcenter()
   }
 
+  // 不知为何这个 plugin 源代码托管在 github 上，但 id 还是用了 gitlab 而非 github
   apply plugin: 'io.gitlab.arturbosch.detekt'
 
   tasks.withType(JavaCompile).configureEach {
@@ -75,6 +79,7 @@ subprojects {
     testLogging {
       exceptionFormat 'FULL'
       showCauses true
+      // 展示异常和错误栈难道不是默认开启的嘛？需要显式地声明？
       showExceptions true
       showStackTraces true
     }
